@@ -125,6 +125,8 @@ services:
   # guacamole
   guacamole:
     container_name: guacamole_compose
+    group_add:
+      - "1000"
     depends_on:
     - guacd
     - postgres
@@ -134,6 +136,7 @@ services:
       POSTGRES_HOSTNAME: postgres
       POSTGRES_PASSWORD: 'ChooseYourOwnPasswordHere1234'
       POSTGRES_USER: guacamole_user
+      RECORDING_SEARCH_PATH: /record
     image: guacamole/guacamole
     networks:
       - guacnetwork_compose
